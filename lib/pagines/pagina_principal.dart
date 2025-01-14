@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:primerprojecte2025/components/dialogN.dart';
 import 'package:primerprojecte2025/components/itemtasca.dart';
 
 class PaginaPrincipal extends StatefulWidget {
@@ -30,6 +31,14 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
     });
   }
   
+  void CrearNovaTasca(){
+    showDialog(
+    context: context, 
+    builder: (context){
+      return const DialogN();
+    }
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +57,7 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
 
       //floating action button //abajo al la derecha
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: CrearNovaTasca,
         backgroundColor: Colors.teal[900],
         shape: const CircleBorder(),
         child: Icon(
