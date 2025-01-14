@@ -14,7 +14,22 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
   List tasquesLlista = [
     {"titol": "tasca 1", "valor": false},
     {"titol": "tasca 2", "valor": true},
+    {"titol": "tasca 3", "valor": false},
+    {"titol": "tasca 4", "valor": true},
   ];
+
+  void CamBox(bool CamBox, int posllista){
+    setState(() {
+      tasquesLlista[posllista]["valor"] = !tasquesLlista[posllista]["valor"];
+    });
+  }
+
+  void accioEsborrarTasca (int posllista){
+    setState(() {
+      tasquesLlista.removeAt(posllista);
+    });
+  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +46,10 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
         foregroundColor: Colors.orange[200],
       ),
 
-      //floating action button
+      //floating action button //abajo al la derecha
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: Colors.teal[400],
+        backgroundColor: Colors.teal[900],
         shape: const CircleBorder(),
         child: Icon(
           Icons.add,
@@ -49,6 +64,11 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
           return Itemtasca(
             textTasca: tasquesLlista[index]["titol"], 
             valorCheckbox: tasquesLlista[index]["valor"],
+            canviaValorBox: (valor) =>CamBox(
+              tasquesLlista[index]["valor"],
+              index,
+              ),
+              esborrarT: (valor) => accioEsborrarTasca(index),
           );
         },
       ),
