@@ -2,7 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:primerprojecte2025/components/botodialog.dart';
 
 class DialogN extends StatelessWidget {
-  const DialogN({super.key});
+  final TextEditingController tectexttasca;
+  final Function()? accioGuardar;
+  final Function()? accioCancelar;
+
+
+
+  const DialogN({super.key,
+  required this.tectexttasca,
+  required this.accioGuardar,
+  required this.accioCancelar,
+
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -11,16 +22,24 @@ class DialogN extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),
       ),
       content: Container(
-        height: 200,
+        height: 150,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const TextField(),
-
+            TextField(
+              controller: tectexttasca,
+              cursorColor: Colors.orange[700],
+              decoration: InputDecoration(hintText: "Escriu la tasaca...",
+              border: OutlineInputBorder(),
+              filled: true,
+              fillColor: Colors.teal[400],
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Botodialog(textboto: "Guardar", accioboto: () {} ), //boto guardar
-                Botodialog(textboto: "Cancelar", accioboto: () {} ), //boto cancelar
+                Botodialog(textboto: "Guardar", accioboto: accioGuardar ), //boto guardar
+                Botodialog(textboto: "Cancelar", accioboto: accioCancelar ), //boto cancelar
             ],
             ),
           ],

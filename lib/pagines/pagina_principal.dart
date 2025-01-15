@@ -19,6 +19,23 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
     {"titol": "tasca 4", "valor": true},
   ];
 
+  TextEditingController tectexttasca = TextEditingController();
+
+
+  void accioGuardar(){
+    setState(() {
+      tasquesLlista.add({
+      "titol": tectexttasca.text,
+      "valor": false,
+    });
+    });
+  }
+
+  void  accioCancelar(){   //boton para cerrar
+    Navigator.of(context).pop();
+    tectexttasca.clear();
+  }
+
   void CamBox(bool CamBox, int posllista){
     setState(() {
       tasquesLlista[posllista]["valor"] = !tasquesLlista[posllista]["valor"];
@@ -35,7 +52,11 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
     showDialog(
     context: context, 
     builder: (context){
-      return const DialogN();
+      return DialogN(
+        tectexttasca: tectexttasca,
+        accioGuardar: accioGuardar,
+        accioCancelar: accioCancelar,
+      );
     }
     );
   }

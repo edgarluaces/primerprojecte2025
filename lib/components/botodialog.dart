@@ -14,7 +14,7 @@ class Botodialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: accioboto,
-      color: Colors.teal[200],
+      color: Colors.teal[400],
       child: Text(textboto),
     );
   }
